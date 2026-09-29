@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Open-Studio · KenStudios95</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="frame">
+      <header class="mast">
+        <div class="wordmark">
+          <span class="mark" aria-hidden="true"></span>
+          <div>
+            <p class="kicker">KenStudios95</p>
+            <h1>Open-Studio</h1>
+          </div>
+        </div>
+        <div class="mast-tools">
+          <nav id="nav" class="nav"></nav>
+          <div id="health" class="worker-status">
+            <div class="status-pill">
+              <span class="dot"></span>
+              Worker offline
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="stage">
+        <section class="panel composer">
+          <div class="tabs">
+            <button class="tab active" data-kind="video">Video</button>
+            <button class="tab" data-kind="image">Image</button>
+            <button class="tab" data-kind="audio">Audio</button>
+          </div>
+          <label for="model">Model</label>
+          <select id="model"></select>
+          <p id="blurb" class="hint"></p>
+          <div id="fields"></div>
+          <div id="attach-box" class="attach-box" hidden>
+            <label for="reference">Reference attachment</label>
+            <input id="reference" type="file" accept="image/*,video/*" />
+            <p class="hint" id="attach-hint">Optional image or video the model should follow.</p>
+            <p class="hint" id="attach-name"></p>
+          </div>
+          <div class="grid-2">
+            <div>
+              <label for="machine">Machine</label>
+              <select id="machine"></select>
+            </div>
+            <label class="check boost"><input id="boost" type="checkbox" /> Boost · strongest free GPU</label>
+          </div>
+          <div class="actions">
+            <p id="form-error" class="error"></p>
+            <button id="generate" class="primary">Generate</button>
+          </div>
+        </section>
+
+        <aside class="panel rail">
+          <div class="rail-head">
+            <h2>Jobs</h2>
+            <p class="hint" id="jobs-hint">Rendered on the worker</p>
+          </div>
+          <div id="jobs" class="jobs"></div>
+          <div id="preview" class="preview">
+            <p class="hint">Select a job to preview the result.</p>
+          </div>
+        </aside>
+      </main>
+
+      <footer class="dock">
+        <a class="powered" href="https://kenstudios95.com" target="_blank" rel="noreferrer">powered by kenstudios95.com</a>
+      </footer>
+    </div>
+    <script src="/common.js"></script>
+    <script src="/app.js"></script>
+  </body>
+</html>

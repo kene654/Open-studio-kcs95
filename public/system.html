@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>System Config · Open-Studio</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="frame">
+      <header class="mast">
+        <div class="wordmark">
+          <span class="mark" aria-hidden="true"></span>
+          <div>
+            <p class="kicker">KenStudios95</p>
+            <h1>Open-Studio</h1>
+          </div>
+        </div>
+        <div class="mast-tools">
+          <nav id="nav" class="nav"></nav>
+          <div id="health" class="worker-status">
+            <div class="status-pill">
+              <span class="dot"></span>
+              Worker offline
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="config-grid">
+        <section class="panel composer">
+          <h2 class="section-title">System Config</h2>
+          <p class="hint">Local settings for this computer. Generation still happens on machines from AI Manager.</p>
+
+          <label for="save-dir">Save location</label>
+          <input id="save-dir" placeholder="/Users/you/Open-Studio/outputs" />
+          <p class="hint" id="save-resolved"></p>
+
+          <label for="filename-pattern">Filename pattern</label>
+          <input id="filename-pattern" placeholder="{kind}-{date}-{id}" />
+          <p class="hint">Tokens: {kind} {date} {id} {prompt}</p>
+
+          <label class="check"><input id="copy-on-complete" type="checkbox" /> Copy finished files to the save location</label>
+          <label class="check"><input id="open-on-complete" type="checkbox" /> Reveal the save folder after a successful generate</label>
+          <label class="check"><input id="auto-open" type="checkbox" /> Open the browser when Open-Studio starts</label>
+          <label class="check"><input id="confirm-generate" type="checkbox" /> Confirm before each generate</label>
+
+          <div class="actions wrap">
+            <p id="sys-status" class="hint"></p>
+            <button id="save-system" class="primary" type="button">Save</button>
+          </div>
+        </section>
+
+        <section class="panel composer">
+          <h2 class="section-title">Notes</h2>
+          <p class="hint">The save location is on this Mac. Completed video, image, and audio are copied here so you do not have to keep files only on a worker.</p>
+          <p class="hint">Add local, network, and cloud machines in AI Manager. Studio routes jobs to a free GPU; Boost uses the strongest one.</p>
+          <p class="hint">The worker pauses generation if the GPU hits 80°C or the CPU hits 88°C, then resumes after it cools.</p>
+        </section>
+      </main>
+
+      <footer class="dock">
+        <a class="powered" href="https://kenstudios95.com" target="_blank" rel="noreferrer">powered by kenstudios95.com</a>
+      </footer>
+    </div>
+    <script src="/common.js"></script>
+    <script src="/system.js"></script>
+  </body>
+</html>

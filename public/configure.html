@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Manager · Open-Studio</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="frame">
+      <header class="mast">
+        <div class="wordmark">
+          <span class="mark" aria-hidden="true"></span>
+          <div>
+            <p class="kicker">KenStudios95</p>
+            <h1>Open-Studio</h1>
+          </div>
+        </div>
+        <div class="mast-tools">
+          <nav id="nav" class="nav"></nav>
+          <div id="health" class="worker-status">
+            <div class="status-pill">
+              <span class="dot"></span>
+              All machines offline
+            </div>
+          </div>
+        </div>
+      </header>
+
+      <main class="config-grid">
+        <section class="panel composer">
+          <h2 class="section-title">AI Manager</h2>
+          <p class="hint">Add local, network, and cloud machines. Studio routes each job to a free GPU automatically, or Boost picks the strongest one.</p>
+          <div id="machine-list" class="machine-list"></div>
+          <div class="actions wrap">
+            <p id="list-status" class="hint"></p>
+            <button id="add-machine" class="primary" type="button">Add machine</button>
+          </div>
+        </section>
+
+        <section class="panel composer">
+          <h2 class="section-title" id="editor-title">Machine</h2>
+          <p class="hint">One worker per PC. Network PCs install over SSH. Cloud workers connect by URL.</p>
+          <input id="machine-id" type="hidden" />
+          <label for="machine-name">Name</label>
+          <input id="machine-name" placeholder="Linux GPU" />
+          <div class="choice-row" id="target-row">
+            <button class="choice" data-target="local" type="button">Local PC</button>
+            <button class="choice" data-target="network" type="button">Network PC</button>
+            <button class="choice" data-target="cloud" type="button">Cloud</button>
+          </div>
+          <div class="grid-2">
+            <div>
+              <label for="priority">Priority</label>
+              <input id="priority" type="number" min="1" max="200" value="50" />
+            </div>
+            <div>
+              <label for="worker-port">Worker port</label>
+              <input id="worker-port" type="number" value="7860" />
+            </div>
+          </div>
+          <label class="check"><input id="enabled" type="checkbox" checked /> Enabled for routing</label>
+
+          <div id="panel-local" class="target-panel">
+            <p class="hint">Uses this Mac at http://127.0.0.1:port</p>
+          </div>
+          <div id="panel-network" class="target-panel">
+            <div class="grid-2">
+              <div>
+                <label for="ssh-host">SSH IP / host</label>
+                <input id="ssh-host" placeholder="192.168.0.51" />
+              </div>
+              <div>
+                <label for="ssh-port">SSH port</label>
+                <input id="ssh-port" type="number" value="22" />
+              </div>
+            </div>
+            <div class="grid-2">
+              <div>
+                <label for="ssh-user">Username</label>
+                <input id="ssh-user" placeholder="username" />
+              </div>
+              <div>
+                <label for="ssh-pass">Password</label>
+                <input id="ssh-pass" type="password" placeholder="Saved password stays if left blank" />
+              </div>
+            </div>
+          </div>
+          <div id="panel-cloud" class="target-panel">
+            <label for="cloud-url">Cloud worker URL</label>
+            <input id="cloud-url" placeholder="https://your-worker.example.com" />
+            <label for="cloud-key">API key</label>
+            <input id="cloud-key" type="password" placeholder="Optional. Saved key stays if left blank" />
+          </div>
+
+          <div class="actions wrap">
+            <p id="conn-status" class="hint"></p>
+            <div class="btn-row">
+              <button id="test" class="ghost" type="button">Test</button>
+              <button id="save" class="primary" type="button">Save</button>
+            </div>
+          </div>
+
+          <div class="install-box">
+            <h3>Models</h3>
+            <p class="hint">Defaults used on Studio. Jobs still run on whichever machine is free.</p>
+            <label for="video-model">Video</label>
+            <select id="video-model"></select>
+            <label for="image-model">Image</label>
+            <select id="image-model"></select>
+            <label for="audio-model">Audio</label>
+            <select id="audio-model"></select>
+            <button id="save-models" class="ghost" type="button">Save model defaults</button>
+            <h3>Install worker</h3>
+            <p class="hint" id="install-copy">Install Open-Studio worker on the selected local or network PC.</p>
+            <button id="install" class="primary" type="button">Install</button>
+            <pre id="install-log" class="log" hidden></pre>
+          </div>
+        </section>
+      </main>
+
+      <footer class="dock">
+        <a class="powered" href="https://kenstudios95.com" target="_blank" rel="noreferrer">powered by kenstudios95.com</a>
+      </footer>
+    </div>
+    <script src="/common.js"></script>
+    <script src="/configure.js"></script>
+  </body>
+</html>
